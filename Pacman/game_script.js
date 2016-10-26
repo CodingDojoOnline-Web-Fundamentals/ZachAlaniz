@@ -82,8 +82,10 @@
     }
 
     function createEnemy(){
+
         document.getElementById('enemy').style.top = enemy.y_position*30 + 'px';
         document.getElementById('enemy').style.left = enemy.x_position*30 + 'px';
+
         document.getElementById('enemy2').style.top = enemy2.y_position*30 + 'px';
         document.getElementById('enemy2').style.left = enemy2.x_position*30 + 'px';
     }
@@ -94,38 +96,38 @@
 
         switch (random) {
             case 37: if(gameWorld[enemy.y_position][enemy.x_position-1] !== 2){
-                enemy.x_position--;
-                $('#enemy').css( 'transform', 'scaleX(-1)');
-            }
-            if(gameWorld[enemy2.y_position][enemy2.x_position-1] !== 2){
-                enemy2.x_position--;
-                $('#enemy2').css( 'transform', 'scaleX(-1)');
-            }
-            break;
+                        enemy.x_position--;
+                        $('#enemy').css( 'transform', 'scaleX(-1)');
+                    }
+                    if(gameWorld[enemy2.y_position+1][enemy2.x_position] !== 2){
+                        enemy2.y_position++;
+                    }
+                    break;
             case 39: if(gameWorld[enemy.y_position][enemy.x_position+1] !== 2){
-                enemy.x_position++;
-                $('#enemy').css('transform', 'scaleX(1)');
-            }
-            if(gameWorld[enemy2.y_position][enemy2.x_position+1] !== 2){
-                enemy2.x_position++;
-                $('#enemy2').css( 'transform', 'scaleX(1)');
-            }
-            break;
+                        enemy.x_position++;
+                        $('#enemy').css('transform', 'scaleX(1)');
+                    }
+                    if(gameWorld[enemy2.y_position-1][enemy2.x_position] !== 2){
+                        enemy2.y_position--;
+                    }
+                    break;
             case 38: if(gameWorld[enemy.y_position-1][enemy.x_position] !== 2){
-                enemy.y_position--;
-            }
-            if(gameWorld[enemy2.y_position-1][enemy2.x_position] !== 2){
-                enemy2.y_position--;
-            }
-            break;
+                        enemy.y_position--;
+                    }
+                    if(gameWorld[enemy2.y_position][enemy2.x_position+1] !== 2){
+                        enemy2.x_position++;
+                        $('#enemy2').css( 'transform', 'scaleX(1)');
+                    }
+                    break;
             case 40: if(gameWorld[enemy.y_position+1][enemy.x_position] !== 2){
-                enemy.y_position++;
+                        enemy.y_position++;
+                    }
+                    if(gameWorld[enemy2.y_position][enemy2.x_position-1] !== 2){
+                        enemy2.x_position--;
+                        $('#enemy2').css( 'transform', 'scaleX(-1)');
+                    }
+                    break;
             }
-            if(gameWorld[enemy2.y_position+1][enemy2.x_position] !== 2){
-                enemy2.y_position++;
-            }
-            break;
-        }
             createEnemy();
     }
 
@@ -155,28 +157,35 @@
         setInterval(moveEnemy, 450);
 
         document.onkeydown = function(event){
+
             if( event.keyCode == 37 && gameWorld[sprite.y_position][sprite.x_position-1] !== 2){
                 sprite.x_position --;
                 $('#sprite').css('transform', 'rotate(180deg)');
             }
+
             else if( event.keyCode == 39 && gameWorld[sprite.y_position][sprite.x_position+1] !== 2){
                 sprite.x_position ++;
                 $('#sprite').css('transform', 'rotate(0deg)');
             }
+
             else if( event.keyCode == 38 && gameWorld[sprite.y_position-1][sprite.x_position] !== 2){
                 sprite.y_position --;
                 $('#sprite').css('transform', 'rotate(270deg)');
             }
+
             else if( event.keyCode == 40 && gameWorld[sprite.y_position+1][sprite.x_position] !== 2){
                 sprite.y_position ++;
-                    $('#sprite').css('transform', 'rotate(90deg)');
+                $('#sprite').css('transform', 'rotate(90deg)');
             }
+
             if( gameWorld[sprite.y_position][sprite.x_position] == 1){ // collect coins
+
                 collect.play();
                 totalCoins--;
                 coinsLeft();
                 gameWorld[sprite.y_position][sprite.x_position] = 0;
                 createWorld();
+
                 if( totalCoins == 0){
                     win();
                     alert('You Win!');
