@@ -155,12 +155,4 @@ function leapYear(year){
 
 }
 
-// Flexible Countdown
 
-function flexCount(lowNum, highNum, mult){
-
-    for( highNum; highNum>lowNum; highNum-= mult){
-        console.log(highNum);
-    }
-
-}
