@@ -139,4 +139,28 @@ function countdown(){
     }
 }
 
-countdown();
+// Leap Year
+
+function leapYear(year){
+    if( year % 4 == 0 && year % 100 !== 0){
+            console.log( "This year is a leap year")
+
+    }
+    else if(year % 400 == 0){
+        console.log( "This year is a leap year")
+    }
+    else{
+        console.log("Not a leap year");
+    }
+
+}
+
+// Flexible Countdown
+
+function flexCount(lowNum, highNum, mult){
+
+    for( highNum; highNum>lowNum; highNum-= mult){
+        console.log(highNum);
+    }
+
+}
