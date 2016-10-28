@@ -155,4 +155,33 @@ function leapYear(year){
 
 }
 
+// Flexible Countdown
+
+function flexCount(lowNum, highNum, mult){
+
+    for( var temp = mult; temp<=highNum; temp+= mult){
+        if( temp >= lowNum){
+            console.log(temp);
+        }
+    }
+}
+
+// The Final Countdown
+
+function finalCount(param1, param2, param3, param4){
+
+    var temp = param1;
+
+    while( temp <= param3){
+
+        if( temp >= param2 && temp !== param4){
+            console.log(temp);
+            temp = temp + param1;
+        }
+        else{
+            temp = temp + param1;
+        }
+    }
+}
+
 
